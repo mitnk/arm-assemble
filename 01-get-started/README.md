@@ -20,4 +20,4 @@ $ echo $?
 2
 ```
 
-
+Assembly is a thin layer on top of the binary code.
