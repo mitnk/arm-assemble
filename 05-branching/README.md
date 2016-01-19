@@ -5,19 +5,19 @@ we need to react to existing conditions which may require different
 sequences of instructions. `branch` is for this purpose.
 
 The register `r15` is very special. It has another name: `pc`.
-pc means *Program Counter*, while in other architectures like
+**pc** means *Program Counter*, while in other architectures like
 386 or x86_64, it calls `ip` for *Instruction Pointer*).
 
-In general, pc contains the address of the next instruction going to
+In general, **pc** contains the address of the next instruction going to
 be executed.
 
 When the ARM processor executes an instruction, two things may happen
-at the end of its execution. If it does not modify pc, pc is just
+at the end of its execution. If it does not modify **pc**, **pc** is just
 incremented by 4. Because instrucations are 32-bit wide in ARM.
 Once the processor has fully executed an instruction then it uses the
-value in the pc as the address for the next instruction to execute.
+value in the **pc** as the address for the next instruction to execute.
 
-The process of changing the value of pc is called *branching*.
+The process of changing the value of **pc** is called *branching*.
 
 ## Unconditional branches
 
