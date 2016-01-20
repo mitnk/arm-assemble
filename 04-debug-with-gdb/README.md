@@ -116,3 +116,33 @@ Continuing.
 
 (gdb) quit
 ```
+
+## break and show more lines
+
+```bash
+(gdb) disas main,+(8*4)
+Dump of assembler code from 0x103e8 to 0x10408:
+=> 0x000103e8 <main+0>: mov r1, #1
+   0x000103ec <main+4>: mov r0, #0
+   0x000103f0 <begin_of_loop+0>:    add r0, r1, r0
+   0x000103f4 <begin_of_loop+4>:    add r1, r1, #1
+   0x000103f8 <begin_of_loop+8>:    cmp r1, #100    ; 0x64
+   0x000103fc <begin_of_loop+12>:   bgt 0x10404 <end_of_loop>
+   0x00010400 <begin_of_loop+16>:   b   0x103f0 <begin_of_loop>
+   0x00010404 <end_of_loop+0>:  bx  lr
+End of assembler dump.
+(gdb) break *0x00010404
+Breakpoint 2 at 0x10404
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00010404 in end_of_loop ()
+(gdb) disas
+Dump of assembler code for function end_of_loop:
+=> 0x00010404 <+0>: bx  lr
+End of assembler dump.
+(gdb) info register r0 r1
+r0             0x13ba   5050
+r1             0x65 101
+(gdb)
+```
